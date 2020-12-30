@@ -82,3 +82,25 @@ Every Availability zone has its own public and private subnet.
 `CIDR block` --> **CIDR** stands-for  **C**lassless **I**nter-**D**omain **R**outing. **CIDR**  is a method for allocating IP addresses and routing Internet Protocol packets. 
 
 `NAT gateways` --> **NAT** stands-for **N**etwork **A**ddress **T**ranslation  . **NAT** gateway to enable instances in a private subnet to connect to the internet or other AWS services, but prevent the internet from initiating a connection with those instances
+
+## SSH keys
+
+The SSH protocol uses public key cryptography for authenticating hosts and users. The authentication keys, called SSH keys, are created using the keygen program
+
+`ssh-keygen` cli can be used to create ssh-key pairs.A ssh key pair consist of :
+   - a public key
+   - a private key corresponding to the public key
+
+SSH supports several public key algorithms for authentication keys. They are :
+   - rsa
+   - dsa
+   - ecdsa
+   - ed25519
+
+```bash
+ssh-keygen -t rsa -b 4096
+ssh-keygen -t dsa
+ssh-keygen -t ecdsa -b 521
+ssh-keygen -t ed25519
+```
+based on the security needs any one such algorithm is selected to generate the ssh keys.
