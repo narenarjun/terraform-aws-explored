@@ -3,6 +3,16 @@
 [Terraform](https://www.terraform.io/) is an open-source infrastructure as code software tool, with which
 aws infrastructure can be created and managed.
 
+## AWS credentials
+
+Since aws credentials are sensitive info, they are not added in the `main.tf` file,
+they are set and exported in the environment variable in bash.
+
+```bash
+AWS_ACCESS_KEY_ID
+AWS_SECRET_ACCESS_KEY
+```
+
 ### AWS specific terminology
 
 #### Amazon VPC
@@ -24,7 +34,14 @@ Two types of subnets:
    - Public subnet
 > ### 📚 Note:
 > Subnetting is the process of dividing a network into smaller network sections. This helps to isolate groups of hosts together.
-
+> For us-east-1 region , subnets can currently only be created in the 
+> following availability zones: 
+> * us-east-1a 
+> * us-east-1b 
+> * us-east-1c
+> * us-east-1d
+> * us-east-1e
+> * us-east-1f.
 
 `Public subnet` --> A subnet's traffic is routed to an internet gateway.
 
@@ -62,4 +79,6 @@ These are private subnets range:
 
 Every Availability zone has its own public and private subnet.
 
-`CIDR block` --> CIDR stands-for  Classless Inter-Domain Routing. CIDR  is a method for allocating IP addresses and routing Internet Protocol packets. 
+`CIDR block` --> **CIDR** stands-for  **C**lassless **I**nter-**D**omain **R**outing. **CIDR**  is a method for allocating IP addresses and routing Internet Protocol packets. 
+
+`NAT gateways` --> **NAT** stands-for **N**etwork **A**ddress **T**ranslation  . **NAT** gateway to enable instances in a private subnet to connect to the internet or other AWS services, but prevent the internet from initiating a connection with those instances
