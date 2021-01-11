@@ -11,6 +11,9 @@ resource "aws_instance" "vc-example-1" {
   # Public SSH key
   key_name = aws_key_pair.magickeypair.key_name
 
+  # User data
+  user_data = data.template_cloudinit_config.cloudinit-example.rendered
+
 }
 
 # creating a ebs storage volume
@@ -25,7 +28,7 @@ resource "aws_ebs_volume" "ebs-mainvpc-vol-1" {
 
 # attaching ebs volume to the ec2 instance
 resource "aws_volume_attachment" "ebs-vol-1-attach" {
-  device_name = "/dev/xvdh"
+  device_name = var.INSTANCE_DEVICE_NAME
   volume_id   = aws_ebs_volume.ebs-mainvpc-vol-1.id
   instance_id = aws_instance.vc-example-1.id
 }

@@ -104,3 +104,15 @@ ssh-keygen -t ecdsa -b 521
 ssh-keygen -t ed25519
 ```
 based on the security needs any one such algorithm is selected to generate the ssh keys.
+
+### [Userdata](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html)
+   - Userdata in AWS can be used to do any customization at launch
+      - we can install extra software
+      - prepare the instance to join a cluster. eg: consul cluster, K8s cluster [as a node or master]
+      - Execute commands/scripts
+      - mount volumes
+   - Userdata is only executed at the creation of the instance, not when the instance reboots
+   - Terraform allows us to add userdata to the `aws_instance` resource
+      - Just a a string (for simple commands)
+      - Using templated (for more complex instructions)
+      
