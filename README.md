@@ -115,4 +115,38 @@ based on the security needs any one such algorithm is selected to generate the s
    - Terraform allows us to add userdata to the `aws_instance` resource
       - Just a a string (for simple commands)
       - Using templated (for more complex instructions)
-      
+
+### Static private IPs
+   - Private IP addresses will be auto-assigned to EC2 instances.
+   - Every subnet within the vpc has its own range (e.g : 10.0.1.0 - 10.0.1.255)  
+   - By specifying the private IP, we can make sure the EC2 instance  always uses the same IP addresses  
+
+### EIP (Elastic IP) address
+   - To use a public IP address, we can use EIPs (Elastic IP addresses)
+   - This is a public, static IP address that we can attach to our instance.
+
+### Route53
+   - Typically, we'll not use IP addresses, but hostnames
+   - This is where route53 comes in 
+   - We can host a domain on AWS using **Route53**
+   - We first need to register a domain name using AWS or any accredited registrar
+   - We can then create a zone in route53 (e.g: example.com) and add DNS records (e.g: server1.example.com)
+
+### RDS 
+   - RDS stands for Relational Database Services
+   - It's a managed database solution :  
+      - we can easily setup replication (high availability)
+      - automated snapshots (for backups)
+      - automated security updates
+      - Easy instance replacement (for vertical scaling)
+   - Supported databases are:
+      - MySQL
+      - MariaDB
+      - PostgreSQL
+      - Microsoft SQL
+   - Steps to create an RDS instance:
+      - create a **subnet group**
+         - Allows you to specify in what subnets the databes will be in
+      - create a **Parameter group** 
+         - Allows you to specify parameters to change settings in the database  
+      - create a security group that allows incoming traffic to the RDS instance   
