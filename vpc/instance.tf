@@ -14,6 +14,9 @@ resource "aws_instance" "vc-example-1" {
   # User data
   user_data = data.template_cloudinit_config.cloudinit-example.rendered
 
+  # role:
+  iam_instance_profile = aws_iam_instance_profile.s3-mybucket-role-instanceprofile.name
+
 }
 
 # creating a ebs storage volume
