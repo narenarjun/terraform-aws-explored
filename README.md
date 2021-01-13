@@ -179,12 +179,29 @@ based on the security needs any one such algorithm is selected to generate the s
   - an **access key** and **secret key** (the API keys)
 
   ### IAM roles
-   - Roles can give users/services (temporary) access that they normally wouldn't have
-   - The roles can be for instance **attached** to EC2 instances
-      - From that instance, a user or service can obtain access credentials
-      - Using those access crendentials the user or service can assume the role, which gives them permission to do something
-   - IAM roles only work on **EC2 instances**  and not for instances outside AWS
-   - The temporary access credentials also need to be **renewed**, they are only valid for a predefined amount of time
-      - This is also something the AWS SDK will take care of 
+
+  - Roles can give users/services (temporary) access that they normally wouldn't have
+  - The roles can be for instance **attached** to EC2 instances
+    - From that instance, a user or service can obtain access credentials
+    - Using those access crendentials the user or service can assume the role, which gives them permission to do something
+  - IAM roles only work on **EC2 instances** and not for instances outside AWS
+  - The temporary access credentials also need to be **renewed**, they are only valid for a predefined amount of time
+    - This is also something the AWS SDK will take care of
+
 - To create a IAM administrators group in AWS, we can create the group and attach the AWS managed Administrator policy to it.
 - We can also create our own custom policy.
+
+### Autoscaling
+
+- In AWS autoscaling groups can be created to **automatically add/remove** instances when creatain threshold are reached
+  - e.g: application layer can be **scaled out** when we have more visitors
+- To set up autoscaling in AWS we need to setup at least **2 resources**
+  - An AWS **launch configuration**
+    - specifies the properties of the instance to be launched (AMI ID, security group etc)
+  - An **autoscaling group**
+    - Specifies the scaling properties (min instances, health checks)
+- Once the autoscaling group is setup, we can create autoscaling policies
+  - A policy is triggered based on a threshold (CloudWatch alarm)
+  - An adjustment will be executed
+    - e.g: if the average CPU utilization is more than 20% then scale up by +1 instances
+    - e.g: if the average CPU utilization is less than 5% then scale down by -1 instances
