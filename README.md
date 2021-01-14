@@ -205,3 +205,18 @@ based on the security needs any one such algorithm is selected to generate the s
   - An adjustment will be executed
     - e.g: if the average CPU utilization is more than 20% then scale up by +1 instances
     - e.g: if the average CPU utilization is less than 5% then scale down by -1 instances
+
+### Elastic Beanstalk
+
+- Elastic Beanstalk is AWS's Platform as a Service (PaaS) solution.
+- It's a platform where we launch our app on without having to maintain the underlying infrastructure.
+  - We are still responsible for the EC2 instances, but AWS will provide us with updates we can apply
+    - Updates can be applied manually or automatically.
+    - The EC2 instances run Amazon linux.
+- Elastic Beanstalk can handle application scaling for us.
+  - Underlying it uses a loadbalancer and an Autoscaling group to achieve this.
+  - We can schedule scaling events or enable autoscaling based on a metric
+- It's similar to heroku (which is a another PaaS solution)
+- When we deploy an Elastic Beanstalk environment we'll get a **CNAME** (hostname) that we can use as endpoint.
+- We can use Route53 to point our domain to that CNAME
+- Once Elastic beanstalk is running, we can apply our application on it using the EB cli utility.
