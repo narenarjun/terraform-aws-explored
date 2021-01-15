@@ -220,3 +220,5 @@ based on the security needs any one such algorithm is selected to generate the s
 - When we deploy an Elastic Beanstalk environment we'll get a **CNAME** (hostname) that we can use as endpoint.
 - We can use Route53 to point our domain to that CNAME
 - Once Elastic beanstalk is running, we can apply our application on it using the EB cli utility.
+> ### 📚 Note:
+>   The list of all supported ebs platforms can be found [here](https://docs.aws.amazon.com/elasticbeanstalk/latest/platforms/platforms-supported.html#platforms-supported.nodejs).
